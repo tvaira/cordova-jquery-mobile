@@ -56,9 +56,9 @@ $ cordova build android --debug
 $ cordova run android --device
 ```
 
-![Android](https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-android.gif | width=50)
+![Android](https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-android.gif)
 
-<img src="https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-android.gif" alt="Android" width="50" height="50">
+<img src="https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-android.gif" alt="Android" width="100" height="100">
 
 Pour iOS :
 
@@ -69,6 +69,6 @@ $ cordova prepare
 $ cordova run ios --device
 ```
 
-![iOS](https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-ios.gif | width=50)
+![iOS](https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-ios.gif)
 
-<img src="https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-ios.gif" alt="iOS" width="50" height="50">
+<img src="https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-ios.gif" alt="iOS" width="90" height="90">
