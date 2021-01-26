@@ -1,16 +1,35 @@
 // Application gfiches
 // tvaira@free.fr
 
-// tag pour logcat : [gfiches] -> $ adb logcat | grep 'gfiches'
+// tag pour logcat : [gfiches] -> $ adb logcat | grep "\[gfiches\]"
 
 document.addEventListener('deviceready', onDeviceReady, false);
+document.addEventListener('pause', onPause, false);
+document.addEventListener('resume', onResume, false);
 
 function onDeviceReady() {
     // Cordova est initialisé
     console.log('[gfiches] Démarrage Cordova v' + cordova.version + ' pour ' + cordova.platformId);
     
     initialiserBaseDeDonnees();
-    document.getElementById('deviceready').classList.add('ready');    
+    
+    document.getElementById('deviceready').classList.add('ready');
+}
+
+function onPause()
+{
+    if(cordova.platformId === 'android') 
+    {
+        console.log('[gfiches] onPause()');
+    }    
+}
+
+function onResume()
+{
+    if(cordova.platformId === 'android') 
+    {
+        console.log('[gfiches] onResume()');
+    }    
 }
 
 $(document).on("mobileinit", function (event, ui)
