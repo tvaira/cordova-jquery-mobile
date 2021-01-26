@@ -11,7 +11,7 @@
 
 ## Installation Apache Cordova
 
-Lire le tutoriel : [installation-cordova.adoc](https://github.com/tvaira/cordova-jquery-mobile/raw/main/installation-cordova/installation-cordova.adoc) [[HTML](https://github.com/tvaira/cordova-jquery-mobile/raw/main/installation-cordova/build/installation-cordova.html) | [PDF](https://github.com/tvaira/cordova-jquery-mobile/raw/main/installation-cordova/build/installation-cordova.pdf)]
+Lire le tutoriel : [installation-cordova.adoc](https://github.com/tvaira/cordova-jquery-mobile/installation-cordova/installation-cordova.adoc) [[HTML](https://github.com/tvaira/cordova-jquery-mobile/installation-cordova/build/installation-cordova.html) | [PDF](https://github.com/tvaira/cordova-jquery-mobile/installation-cordova/build/installation-cordova.pdf)]
 
 <a name="application-gfiches"/>
 
