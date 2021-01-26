@@ -206,7 +206,7 @@
             <div role="main" class="ui-content">
                 <!--<h3>Ajouter une fiche</h3>-->
                 <div id="affichage-erreur-enregistrement"></div>
-                <div class="ui-field-contain">
+                <!--<div class="ui-field-contain">-->
                     <label for="input-titre">Titre :</label>
                     <input type="text" name="input-titre" id="input-titre" placeholder="Un titre" value="">
                     <p class="spacing"></p>
@@ -233,12 +233,8 @@
                     <!--<label for="input-range" class="select">Pourcentage :</label>-->
                     <!-- /Exemple de formulaire jQuery Mobile -->
                     <input type="range" name="input-range" id="input-range" value="25" min="0" max="100" data-highlight="true" />
-                </div>
-                <div data-role="fieldcontain" class="center">
-                    <a href="" id="bouton-envoyer" data-role="button" data-icon="check" data-inline="true" class="ui-corner-all">Sauvegarder</a>
-                    <a href="" id="bouton-annuler" data-role="button" data-icon="delete" data-inline="true" class="ui-corner-all">Annuler</a>
-                </div>                
-                <p></p>
+                <!--</div>-->
+                <!--<p></p>-->
                 <div data-role="popup" id="enregistrement-erreur" data-dismissible="false" data-theme="a">
                     <div role="main" class="ui-content">
                         <h3 class="center">Erreur enregistrement !</h3>
@@ -249,7 +245,13 @@
                 </div>                
             </div>
             <footer data-role="footer" data-position="fixed" data-mini="true">
-                <a href="#" class="prev ui-btn ui-corner-all ui-btn-inline ui-mini ui-btn-left ui-btn-icon-notext ui-icon-back">Retour</a>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#fiches" data-role="button" data-icon="back">Retour</a></li>
+                        <li><a href="" id="bouton-envoyer" data-role="button" data-icon="check">Sauvegarder</a></li>
+                        <li><a href="" id="bouton-annuler" data-role="button" data-icon="delete">Annuler</a></li>
+                    </ul>
+                </div>
                 <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
             </footer>
         </div>
@@ -264,18 +266,14 @@
             <div role="main" class="ui-content">
                 <!--<h3>Modifier une fiche</h3>-->
                 <div id="affichage-erreur-modification"></div>
-                <div class="ui-field-contain">
+                <!--<div class="ui-field-contain">-->
                     <label for="input-titre">Titre :</label>
                     <input type="text" name="input-titre" id="input-titre" placeholder="Un titre" value="">
                     <p class="spacing"></p>
                     <label for="input-description">Description :</label>
                     <textarea cols="40" rows="8" name="input-description" id="input-description"></textarea>
-                </div>
-                <div data-role="fieldcontain" class="center">
-                    <a href="" id="bouton-envoyer" data-role="button" data-icon="check" data-inline="true" class="ui-corner-all">Sauvegarder</a>
-                    <a href="" id="bouton-annuler" data-role="button" data-icon="delete" data-inline="true" class="ui-corner-all">Annuler</a>
-                </div>                
-                <p></p>
+                <!--</div>-->
+                <!--<p></p>-->
                 <div data-role="popup" id="modification-erreur" data-dismissible="false" data-theme="a">
                     <div role="main" class="ui-content">
                         <h3 class="center">Erreur modification !</h3>
@@ -286,7 +284,13 @@
                 </div>                
             </div>
             <footer data-role="footer" data-position="fixed" data-mini="true">
-                <a href="#" class="prev ui-btn ui-corner-all ui-btn-inline ui-mini ui-btn-left ui-btn-icon-notext ui-icon-back">Retour</a>
+                <div data-role="navbar">
+                    <ul>
+                        <li><a href="#fiches" data-role="button" data-icon="back">Retour</a></li>
+                        <li><a href="" id="bouton-envoyer" data-role="button" data-icon="check">Sauvegarder</a></li>
+                        <li><a href="" id="bouton-annuler" data-role="button" data-icon="delete">Annuler</a></li>
+                    </ul>
+                </div>
                 <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
             </footer>
         </div>
