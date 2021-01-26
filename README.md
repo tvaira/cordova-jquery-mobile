@@ -6,6 +6,7 @@
    * [Application de démonstration](#application-gfiches)
   	 * [Démarrage](#demarrage)
 	 * [Tests](#tests)
+     * [Icônes de l'application](#icons)
 
 <a name="installation-cordova"/>
 
@@ -68,3 +69,35 @@ $ cordova run ios --device
 ```
 
 <img src="https://github.com/tvaira/cordova-jquery-mobile/raw/main/gfiches/screenshots/screenshot-ios.gif" alt="iOS" width="50%" height="50%">
+
+<a name="icons"/>
+
+### Icônes de l'application
+
+Il existe un utilisaire qui assure le redimensionnement automatique des icônes pour Cordova : [cordova-icon](https://github.com/AlexDisler/cordova-icon)
+
+Il faut créer une icône dans le dossier pour les ressources (par exemple `res/icons`) à la racine du projet Cordova. L'utilitaire la redimensionne et la copie automatiquement pour toutes les plates-formes prises en charge par le projet (cela fonctionne notamment pour Android et iOS).
+
+Pour Android (sous Ubuntu) :
+
+```sh
+$ cd cordova-jquery-mobile/gfiches
+
+$ sudo apt-get install imagemagick
+$ npm install cordova-icon -g
+
+$ cordova-icon --config=config.xml --icon=./res/icons/icon-android.png
+```
+
+_Remarque :_ les icônes de l'application Android seront copiés automatiquement dans `cordova-jquery-mobile/gfiches/platforms/android/app/src/main/res`
+
+Pour iOS (sous Mac OS) :
+
+```sh
+$ cd cordova-jquery-mobile/gfiches
+
+$ brew install imagemagick
+$ npm install cordova-icon -g
+
+$ cordova-icon --config=config.xml --icon=./res/icons/icon-ios.png
+```
