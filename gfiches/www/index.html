@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <!--<meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="lib/jqm/1.4.5/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/flatui/jquery.mobile.flatui.css" />
+        <link rel="stylesheet" type="text/css" href="css/gfiches.css" />
+        <meta name="mobile-web-app-capable" content="yes">
+	 	<meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+        <title>Gestion de fiches</title>
+    </head>
+    <body>
+        <!-- page accueil -->
+        <section id="accueil" data-role="page" data-fullscreen="true" data-next="#utilisateurs" data-theme="a">
+            <!-- header -->
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+                <!-- <a href="#menu" class="ui-btn-left" data-icon="bars" data-iconpos="notext">Menu</a> -->
+            </header>
+            <!-- /header -->
+            <!-- content -->
+            <div data-role="content">
+                <h1 id="message-accueil" class="center"></h1>
+                <div id="affichage-connexion">                    
+                    <a href="#page-connexion-utilisateur" class="ui-btn ui-corner-all">Se connecter</a>
+                    <p><b>Vous n'avez pas de compte ?</b></p>
+                    <a href="#page-enregistrement-utilisateur" class="ui-btn ui-corner-all">S'enregistrer</a>
+                    <p class="center"><img src="./img/logo.png" alt="LaSalle Avignon" width="33%" height="33%" /></p>
+                </div>
+                <div id="affichage-utilisateur">
+                    <button id="bouton-deconnecter" class="ui-btn ui-corner-all">Se déconnecter</button>
+                    <p class="center"><img src="./img/logo.png" alt="LaSalle Avignon" width="33%" height="33%" /></p>
+                </div>
+            </div>
+            <!-- /content -->
+            <!-- footer -->
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <div data-role="navbar" data-iconpos="left">
+                  <ul>
+                    <!-- <li><a href="#utilisateurs" data-icon="user">Utilisateurs</a></li> -->
+                    <li><a href="#utilisateurs" data-icon="user">Utilisateurs</a></li>
+                    <li><a href="#fiches" data-icon="shop">Fiches</a></li>
+                  </ul>
+                </div>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+            <!-- /footer -->
+            <!-- panel -->
+            <!--
+            <div id="menu" data-role="panel" data-display="push" data-position="left">
+                <ul data-role="listview">
+                    <li><a href="#utilisateurs" data-ajax="false">Utilisateurs</a></li>
+                    <li><a href="#fiches" data-ajax="false">Fiches</a></li>
+                    <li data-icon="delete"><a href="#accueil" data-rel="close">Fermer</a></li>
+                </ul>
+            </div>
+            -->
+            <!-- /panel -->
+        </section>
+        <!-- /page accueil -->
+        <!-- page utilisateurs -->
+        <section id="utilisateurs" data-role="page" data-prev="#accueil" data-next="#fiches" data-theme="a">
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+            </header>
+            <div data-role="content">
+                <ul id="liste-utilisateurs" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Rechercher ...">
+                </ul>    
+            </div>
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <div data-role="navbar" data-iconpos="left">
+                  <ul>
+                    <li><a href="#utilisateurs" data-icon="user" class="ui-btn-active ui-state-persist">Utilisateurs</a></li>
+                    <li><a href="#fiches" data-icon="shop">Fiches</a></li>
+                  </ul>
+                </div>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </section>
+        <!-- /page utilisateurs -->
+        <!-- page fiches -->
+        <section id="fiches" data-role="page" data-prev="#utilisateurs" data-next="" data-theme="a">
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+            </header>
+            <div data-role="content">
+                <!-- une vue en liste -->
+                <ul id="liste-fiches" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Rechercher ...">                    
+                </ul>
+                <div data-role="controlgroup" data-type="horizontal" data-theme="a">
+                    <a href="" id="bouton-ajouter" data-role="button" data-icon="plus" class="ui-corner-all">Ajouter</a>
+                </div>
+            </div>            
+            <footer data-role="footer" data-position="fixed" data-mini="true">                
+                <div data-role="navbar" data-iconpos="left">
+                  <ul>
+                    <li><a href="#utilisateurs" data-icon="user">Utilisateurs</a></li>
+                    <li><a href="#fiches" data-icon="shop" class="ui-btn-active ui-state-persist">Fiches</a></li>
+                  </ul>
+                </div>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </section>
+        <!-- /page fiches -->
+        <!-- page connexion -->
+        <div id="page-connexion-utilisateur" data-role="page" data-prev="#accueil" data-theme="a">
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+            </header>
+            <div role="main" class="ui-content">
+                <h2 class="center">Se connecter</h2>
+                <div id="affichage-erreur-connexion"></div>
+                <div data-role="fieldcontain">
+                    <label for="input-utilisateur">Utilisateur :</label>
+                    <input type="text" name="input-utilisateur" id="input-utilisateur" value="" />
+                    <p></p>
+                    <label for="input-password">Mot de passe :</label>
+                    <input type="password" name="input-password" id="input-password" value="">
+                    <p></p>
+                    <fieldset data-role="controlgroup">
+                        <input type="checkbox" name="checkbox-rememberme" id="checkbox-rememberme" data-theme="c"> <!-- checked="checked" -->
+                        <label for="checkbox-rememberme">Se rappeler de moi</label>
+                    </fieldset>
+                </div>
+                <button id="bouton-envoyer" class="ui-btn ui-corner-all">Envoyer</button>
+                <div data-role="popup" id="connexion-erreur" data-dismissible="false" data-theme="a">
+                    <div role="main" class="ui-content">
+                        <h3 id="message-connexion-erreur" class="center"></h3>
+                        <p></p>
+                        <a href="#page-connexion-utilisateur" class="ui-btn ui-corner-all ui-shadow ">Fermer</a>
+                        <p></p>
+                    </div>
+                </div>                
+            </div>
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <a href="#" class="prev ui-btn ui-corner-all ui-btn-inline ui-mini ui-btn-left ui-btn-icon-notext ui-icon-back">Retour</a>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </div>
+        <!-- /page connexion -->
+        <!-- page enregistrement -->
+        <div id="page-enregistrement-utilisateur" data-role="page" data-prev="#accueil" data-theme="a">
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+            </header>
+            <div role="main" class="ui-content">
+                <h2 class="center">S'enregistrer</h2>
+                <div id="affichage-erreur-enregistrement"></div>
+                <div data-role="fieldcontain">
+                    <label for="input-utilisateur">Utilisateur :</label>
+                    <input type="text" name="input-utilisateur" id="input-utilisateur" value="">
+                    <p></p>
+                    <label for="input-password">Mot de passe :</label>
+                    <input type="password" name="input-password" id="input-password" value="">
+                    <p></p>
+                    <label for="input-password-confirm">Confirmer le mot de passe :</label>
+                    <input type="password" name="input-password-confirm" id="input-password-confirm" value="">                    
+                </div>
+                <button id="bouton-envoyer" class="ui-btn ui-corner-all">Envoyer</button>                
+                <div data-role="popup" id="enregistrement-erreur" data-dismissible="false" data-theme="a">
+                    <div role="main" class="ui-content">
+                        <h3 class="center">Erreur enregistrement !</h3>
+                        <p></p>
+                        <a href="#page-enregistrement-utilisateur" class="ui-btn ui-corner-all ui-shadow ">Fermer</a>
+                        <p></p>
+                    </div>
+                </div>
+                <div data-role="popup" id="enregistrement-succes" data-dismissible="false" data-theme="a">
+                    <div role="main" class="ui-content">
+                        <h3 class="center">Inscription réussie</h3>
+                        <p>Toutes nos félicitations ! Vous êtes maintenant inscrit.</p>
+                        <div class="center"><a href="#page-connexion-utilisateur" class="ui-btn ui-corner-all ui-shadow">Se connecter</a></div>
+                        <p></p>
+                    </div>
+                </div>                
+            </div>
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <a href="#" class="prev ui-btn ui-corner-all ui-btn-inline ui-mini ui-btn-left ui-btn-icon-notext ui-icon-back">Retour</a>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </div>
+        <!-- /page enregistrement -->
+        <!-- page enregistrement fiche -->
+        <div id="page-enregistrement-fiche" data-role="page" data-prev="#fiches" data-theme="a">
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+            </header>
+            <div role="main" class="ui-content">
+                <!--<h3>Ajouter une fiche</h3>-->
+                <div id="affichage-erreur-enregistrement"></div>
+                <div class="ui-field-contain">
+                    <label for="input-titre">Titre :</label>
+                    <input type="text" name="input-titre" id="input-titre" placeholder="Un titre" value="">
+                    <p class="spacing"></p>
+                    <label for="input-description">Description :</label>
+                    <textarea cols="40" rows="8" name="input-description" id="input-description"></textarea>
+                    <p class="spacing"></p>
+                    <!-- Exemple de formulaire jQuery Mobile -->
+                    <label for="input-date">Date :</label>
+                    <input type="date" name="input-date" id="input-date" value="">
+                    <p class="spacing"></p>
+                    <label for="input-telephone">Téléphone :</label>
+                    <input type="tel" name="input-telephone" id="input-telephone" value="">
+                    <p class="spacing"></p>
+                    <label for="input-nombre">Nombre :</label>
+                    <input type="number" pattern="[0-9]*" name="input-nombre" id="input-nombre" value="1">
+                    <p class="spacing"></p>
+                    <!--<label for="input-select-choix" class="select">Priorité :</label>-->
+                    <select name="input-select-choix" id="input-select-choix" data-mini="true" data-inline="true">
+                        <option value="basse">Basse</option>
+                        <option value="moyenne">Moyenne</option>
+                        <option value="haute">Haute</option>
+                    </select>
+                    <p class="spacing"></p>
+                    <!--<label for="input-range" class="select">Pourcentage :</label>-->
+                    <!-- /Exemple de formulaire jQuery Mobile -->
+                    <input type="range" name="input-range" id="input-range" value="25" min="0" max="100" data-highlight="true" />
+                </div>
+                <div data-role="fieldcontain" class="center">
+                    <a href="" id="bouton-envoyer" data-role="button" data-icon="check" data-inline="true" class="ui-corner-all">Sauvegarder</a>
+                    <a href="" id="bouton-annuler" data-role="button" data-icon="delete" data-inline="true" class="ui-corner-all">Annuler</a>
+                </div>                
+                <p></p>
+                <div data-role="popup" id="enregistrement-erreur" data-dismissible="false" data-theme="a">
+                    <div role="main" class="ui-content">
+                        <h3 class="center">Erreur enregistrement !</h3>
+                        <p></p>
+                        <a href="#page-enregistrement-fiche" class="ui-btn ui-corner-all ui-shadow ">Fermer</a>
+                        <p></p>
+                    </div>
+                </div>                
+            </div>
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <a href="#" class="prev ui-btn ui-corner-all ui-btn-inline ui-mini ui-btn-left ui-btn-icon-notext ui-icon-back">Retour</a>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </div>
+        <!-- /page enregistrement fiche -->
+        <!-- page modification fiche -->
+        <div id="page-modification-fiche" data-role="page" data-prev="#fiches" data-theme="a">
+            <header data-role="header" data-position="fixed">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a>
+                <a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a>
+            </header>
+            <div role="main" class="ui-content">
+                <!--<h3>Modifier une fiche</h3>-->
+                <div id="affichage-erreur-modification"></div>
+                <div class="ui-field-contain">
+                    <label for="input-titre">Titre :</label>
+                    <input type="text" name="input-titre" id="input-titre" placeholder="Un titre" value="">
+                    <p class="spacing"></p>
+                    <label for="input-description">Description :</label>
+                    <textarea cols="40" rows="8" name="input-description" id="input-description"></textarea>
+                </div>
+                <div data-role="fieldcontain" class="center">
+                    <a href="" id="bouton-envoyer" data-role="button" data-icon="check" data-inline="true" class="ui-corner-all">Sauvegarder</a>
+                    <a href="" id="bouton-annuler" data-role="button" data-icon="delete" data-inline="true" class="ui-corner-all">Annuler</a>
+                </div>                
+                <p></p>
+                <div data-role="popup" id="modification-erreur" data-dismissible="false" data-theme="a">
+                    <div role="main" class="ui-content">
+                        <h3 class="center">Erreur modification !</h3>
+                        <p></p>
+                        <a href="#page-enregistrement-fiche" class="ui-btn ui-corner-all ui-shadow ">Fermer</a>
+                        <p></p>
+                    </div>
+                </div>                
+            </div>
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <a href="#" class="prev ui-btn ui-corner-all ui-btn-inline ui-mini ui-btn-left ui-btn-icon-notext ui-icon-back">Retour</a>
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </div>
+        <!-- /page modification fiche -->
+        <!-- page à propos -->
+        <section id="apropos" data-role="page" data-theme="a">
+            <header data-role="header" data-position="fixed" data-add-back-btn="true" data-back-btn-text="Retour">
+                <h1>LaSalle Avignon</h1>
+                <a href="#accueil" class="ui-btn-left" data-icon="home" data-iconpos="notext">Accueil</a>
+            </header>
+            <h2 class="center">À propos</h2>
+            <div class="content" data-role="content">
+                <h3 class="center">LaSalle Avignon</h3>
+                <p class="center">Contact : 04.90.14.56.56</p>
+                <p class="center"><img src="./img/logo.png" alt="LaSalle Avignon" width="25%" height="25%" /></p>
+            </div>
+            <div class="center" data-role="controlgroup" data-type="horizontal" data-mini="true">
+                <a href="mailto:tvaira%40free.fr" data-role="button" data-icon="mail" data-iconpos="right" target="_blank">tvaira(at)free.fr</a>
+            </div>
+            <footer data-role="footer" data-position="fixed" data-mini="true">
+                <p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p>
+            </footer>
+        </section>
+        <!-- /page à propos -->
+        <!-- scripts -->
+        <script src="cordova.js"></script>
+        <script src="lib/crypto/sha256.js"></script>
+        <script src="lib/fastclick/fastclick.min.js"></script>
+        <script src="lib/jquery/2.1.1/jquery-2.1.1.min.js"></script>
+        <script src="js/fonctions.js"></script>
+        <script src="js/bd.js"></script>
+        <script src="js/storage.js"></script>
+        <script src="js/pdf.js"></script>
+        <script src="js/accueil.js"></script>
+        <script src="js/utilisateurs.js"></script>
+        <script src="js/fiches.js"></script>
+        <script src="js/fiche.js"></script>
+        <script src="js/enregistrement-fiche.js"></script>
+        <script src="js/modification-fiche.js"></script>
+        <script src="js/enregistrement-utilisateur.js"></script>
+        <script src="js/connexion-utilisateur.js"></script>        
+        <script src="js/index.js"></script>        
+        <script src="lib/jqm/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+        <script src="js/nav.js"></script>
+    </body>
+</html>

@@ -1,0 +1,12 @@
+/* Quelques personnalisation */
+.center { text-align: center; }
+.spacing { margin:5px; }
+.saisie-invalide { background-color:#f2dede!important; }
+.erreur-saisie {
+    color:#a94442;
+    background-color:#f2dede;
+    border-color:#ebccd1;
+    padding:1px 20px 1px 20px;
+    margin-bottom:.5em;    
+    border-radius:3px 3px;
+}
