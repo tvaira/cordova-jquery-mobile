@@ -102,7 +102,7 @@ Fiches.prototype.lister = function () {
                         hour: 'numeric',
                         minute: 'numeric',
                         second: 'numeric'});
-                    var titre = row['titre'].replace(/\s/g, '');
+                    var titre = row['titre'].replace(/\s/g, '_');
                     var description = row['description'].replace(/\n/g, "<br />");
                     var exporte = "";
                     if(row['export'] == 1)
@@ -110,14 +110,17 @@ Fiches.prototype.lister = function () {
                     console.log('[gfiches] Fiche : ' + row['titre'] + ' - ' + row['description'] + ' - ' + row['nom']);                    
                     
                     // Crée un élément et l'ajoute à la liste à afficher
-                    var item = '<li id="'+row['titre']+'" fiche="'+titre+'" data-icon="eye" class="li-fiche"><a href="#'+titre+'" data-transition="slide"><h3>'+row['titre']+'</h3><p>'+dateLocale+'</p><span class="ui-li-count">'+row['nom']+'</span><p class="ui-li-aside"><strong>'+exporte+'</strong></p></a></li>';
+                    var id_fiche = "id_" + titre;
+                    var item = '<li id="'+row['titre']+'" fiche="'+id_fiche+'" data-icon="eye" class="li-fiche"><a href="#'+id_fiche+'" data-transition="slide"><h3>'+row['titre']+'</h3><p>'+dateLocale+'</p><span class="ui-li-count">'+row['nom']+'</span><p class="ui-li-aside"><strong>'+exporte+'</strong></p></a></li>';
+                    console.log('[gfiches] item : id=' + row['titre'] + ' - fiche=' + id_fiche);
                     $("#liste-fiches", "#fiches").append(item);
 
                     // Crée une page pour cette fiche
-                    var fiche = '<section id="'+titre+'" data-role="page" data-theme="a"><header data-role="header" data-position="fixed"><h1>LaSalle Avignon</h1><a href="#accueil" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a><a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a></header><h2 class="center">'+row['titre']+'</h2><h3 class="center">Rédigé par '+row['nom']+'</h3><p class="center">Le '+dateLocale+'</p><div class="content" data-role="content"><p>'+description+'</p></div><footer data-role="footer" data-position="fixed" data-mini="true"><div data-role="navbar"><ul><li><a href="#fiches" data-role="button" data-icon="back">Retour</a></li><li><a href="" id="bouton-exporter" data-role="button" data-icon="action">Exporter</a></li><li><a href="" id="bouton-modifier" data-role="button" data-icon="edit">Modifier</a></li><li><a href="" id="bouton-supprimer" data-role="button" data-icon="delete">Supprimer</a></li></ul></div><p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p></footer></section>';
+                    var fiche = '<section id="'+id_fiche+'" data-role="page" data-theme="a"><header data-role="header" data-position="fixed"><h1>LaSalle Avignon</h1><a href="#accueil" class="ui-btn-left" data-icon="home" data-iconpos="notext" data-transition="slide" data-direction="reverse">Accueil</a><a href="#apropos" class="ui-btn-right" data-icon="info" data-iconpos="notext">À propos</a></header><h2 class="center">'+row['titre']+'</h2><h3 class="center">Rédigé par '+row['nom']+'</h3><p class="center">Le '+dateLocale+'</p><div class="content" data-role="content"><p>'+description+'</p></div><footer data-role="footer" data-position="fixed" data-mini="true"><div data-role="navbar"><ul><li><a href="#fiches" data-role="button" data-icon="back">Retour</a></li><li><a href="" id="bouton-exporter" data-role="button" data-icon="action">Exporter</a></li><li><a href="" id="bouton-modifier" data-role="button" data-icon="edit">Modifier</a></li><li><a href="" id="bouton-supprimer" data-role="button" data-icon="delete">Supprimer</a></li></ul></div><p class="center">©&nbsp;2021&nbsp;tvaira.free.fr</p></footer></section>';
+                    console.log('[gfiches] section : ' + id_fiche + ' -> ' + fiche);
                     
                     // Supprime l'ancienne page de cette fiche
-                    $("#"+titre).remove();
+                    $("#"+id_fiche).remove();
                     
                     // Ajoute la nouvelle page pour cette fiche
                     $("body").append(fiche);
