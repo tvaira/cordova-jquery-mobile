@@ -19,7 +19,7 @@ function initialiserBaseDeDonnees()
                 //Success
             },
             function(transaction, error) {
-                alert('Erreur requête sqlite : ' + error.message + ' !');
+                alert('Erreur requête DROP : ' + error.message + ' !');
             }
         );
     });*/
@@ -33,21 +33,26 @@ function initialiserBaseDeDonnees()
                 //Success
             },
             function(transaction, error) {
-                alert('Erreur requête sqlite : ' + error.message + ' !');
+                alert('Erreur requête CREATE : ' + error.message + ' !');
             }
         );
+    });
 
-        // Pour les tests : insertion d'un utilisateur
-        /*var hash = CryptoJS.SHA256('password');
-        transaction.executeSql('INSERT INTO utilisateurs VALUES (?,?)', ['Toto', hash],
+    // Pour les tests : insertion d'un utilisateur
+    /*bdd.transaction(function(transaction) {
+        var hash = CryptoJS.SHA256('a');
+        var nom = "John";
+        console.log('[gfiches] Insertion utilisateur : ' + nom);
+        transaction.executeSql('INSERT INTO utilisateurs VALUES (?,?)', [nom, hash],
             function(transaction, result) {
                 //Success
             },
             function(transaction, error) {
-                alert('Erreur requête sqlite : ' + error.message + ' !');
+                console.log('Erreur requête sqlite : ' + error.message + ' !');
+                alert('Erreur requête INSERT : ' + error.message + ' !');
             }
-        );*/
-    });
+        );
+    });*/
 
     // Pour les tests : suppression de la table 'fiches'
     /*bdd.transaction(function(transaction) {
@@ -70,7 +75,7 @@ function initialiserBaseDeDonnees()
                 //Success
             },
             function(transaction, error) {
-                alert('Erreur requête sqlite : ' + error.message + ' !');
+                alert('Erreur requête CREATE : ' + error.message + ' !');
             }
         );
 
@@ -81,7 +86,7 @@ function initialiserBaseDeDonnees()
                 //Success
             },
             function(transaction, error) {
-                alert('Erreur requête sqlite : ' + error.message + ' !');
+                alert('Erreur requête INSERT : ' + error.message + ' !');
             }
         );*/
     });

@@ -1,6 +1,8 @@
 // Lister les utilisateurs
 // tvaira@free.fr
 
+var id_utilisateur = ""; // à supprimer
+
 Utilisateurs = function ()
 {
     this.connecte = "connecte";
@@ -101,11 +103,14 @@ Utilisateurs.prototype.lister = function ()
                     {
                         event.preventDefault();
                         event.stopPropagation();
-                        console.log('[gfiches] Suppression id = ' + $(this).attr("id"));
+                        id_utilisateur = $(this).attr("id");
+                        console.log('[gfiches] Suppression id = ' + id_utilisateur);
+                        // Demande la confirmation                        
+                        $("#confirmation-suppresion").popup("open");                        
                         // Supprime l'élément de la base de données
-                        utilisateurs.supprimer($(this).attr("id"));
+                        //utilisateurs.supprimer($(this).attr("id"));
                         // Supprime l'élément de la liste
-                        $(this).remove();
+                        //$(this).remove();
                     }
                 });
             },
@@ -125,7 +130,31 @@ Utilisateurs.prototype.lister = function ()
 };
 
 // Création de la page utilisateurs
-$(document).delegate("#utilisateurs", "pagebeforecreate", function()
-{
+$(document).delegate("#utilisateurs", "pagebeforecreate", function(){
     utilisateurs.init();
+});
+
+$( '#confirmation-suppresion' ).on({
+    popupafteropen: function() {
+        $("#bouton-oui").on("click", function () {
+            //console.log('[gfiches] confirmation-suppresion : OUI ' + id_utilisateur);
+            if(id_utilisateur.length > 0)
+            {
+                // Supprime l'élément de la base de données
+                utilisateurs.supprimer(id_utilisateur);
+            }
+        });
+        $("#bouton-non").on("click", function () {
+            //console.log('[gfiches] confirmation-suppresion : NON ' + id_utilisateur);
+        });
+    },
+    popupafterclose: function() {
+        // Recharge la page
+        $(":mobile-pagecontainer").pagecontainer("change", "index.html#utilisateurs",
+        {
+            reload: false,
+            allowSamePageTransition: true,
+            transition: "none"
+        });
+    }
 });

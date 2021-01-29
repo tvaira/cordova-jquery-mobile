@@ -77,6 +77,17 @@
                 <ul id="liste-utilisateurs" data-role="listview" data-inset="true" data-filter="true" data-filter-placeholder="Rechercher ...">
                 </ul>
             </div>
+            <div data-role="popup" id="confirmation-suppresion" data-dismissible="false" data-transition="pop" data-theme="a">
+                <div class="ui-content">
+                    <h3 class="center">Confirmez-vous la suppression ?</h3>
+                    <p></p>
+                    <p></p>
+                    <div style="text-align:right">
+                        <a href="#utilisateurs" id="bouton-oui" data-role="button" data-inline="true">Oui</a>
+                        <a href="" id="bouton-non" data-role="button" data-inline="true" data-rel="back">Non</a>
+                    </div>                    
+                </div>
+            </div>
             <footer data-role="footer" data-position="fixed" data-mini="true">
                 <div data-role="navbar" data-iconpos="left">
                   <ul>

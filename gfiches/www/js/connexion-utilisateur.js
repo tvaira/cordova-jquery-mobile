@@ -132,7 +132,6 @@ ConnexionUtilisateur.prototype.connecter = function ()
 // Création de la page connexion d'un utilisateur
 $(document).delegate("#page-connexion-utilisateur", "pagebeforecreate", function()
 {
-
     connexionUtilisateur.init();
 
     // Active le bouton "Se connecter"
