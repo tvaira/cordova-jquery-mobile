@@ -49,8 +49,6 @@ enregistrementFiche = new EnregistrementFiche();
 enregistrementUtilisateur = new EnregistrementUtilisateur();
 connexionUtilisateur = new ConnexionUtilisateur();
 
-console.log('[gfiches] Main step 3');
-
 // Gestion des pages
 $(document).on("pagecontainerbeforeshow", function (event, ui) {
     if (typeof ui.toPage == "object")
