@@ -6,6 +6,8 @@ function initialiserBaseDeDonnees()
     if(!supportsSqlitePlugin())
         return false;
 
+    //console.log('[gfiches] initialiserBaseDeDonnees() start');
+
     var bdd = null;
     bdd = window.sqlitePlugin.openDatabase({name: "fiches.db", location: 'default'});
     if(bdd == null)
@@ -90,4 +92,6 @@ function initialiserBaseDeDonnees()
             }
         );*/
     });
+
+    //console.log('[gfiches] initialiserBaseDeDonnees() done');
 }

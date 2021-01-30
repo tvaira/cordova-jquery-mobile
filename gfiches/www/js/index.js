@@ -2,6 +2,10 @@
 // tvaira@free.fr
 
 // tag pour logcat : [gfiches] -> $ adb logcat | grep "\[gfiches\]"
+// tag pour logcat : [gfiches] -> $ adb logcat | grep -iE "\[gfiches\]|error"
+
+var jqueryReady = false;
+var cordovaReady = false;
 
 document.addEventListener('deviceready', onDeviceReady, false);
 document.addEventListener('pause', onPause, false);
@@ -10,26 +14,10 @@ document.addEventListener('resume', onResume, false);
 function onDeviceReady() {
     // Cordova est initialisé
     console.log('[gfiches] Démarrage Cordova v' + cordova.version + ' pour ' + cordova.platformId);
-    
-    initialiserBaseDeDonnees();
-    
-    document.getElementById('deviceready').classList.add('ready');
-}
 
-function onPause()
-{
-    if(cordova.platformId === 'android') 
-    {
-        console.log('[gfiches] onPause()');
-    }    
-}
-
-function onResume()
-{
-    if(cordova.platformId === 'android') 
-    {
-        console.log('[gfiches] onResume()');
-    }    
+    cordovaReady = true;
+    //document.getElementById('deviceready').classList.add('ready');
+    isReady();
 }
 
 $(document).on("mobileinit", function (event, ui)
@@ -37,8 +25,21 @@ $(document).on("mobileinit", function (event, ui)
     // jQuery Mobile est initialisé
     console.log('[gfiches] Démarrage jQuery Mobile');
     
+    jqueryReady = true;
     $.mobile.defaultPageTransition = "slide";
+    isReady();
 });
+
+function main()
+{
+    console.log('[gfiches] Main start');
+
+    initialiserPlateformeIOS();
+
+    initialiserBaseDeDonnees();
+
+    //console.log('[gfiches] Main done');
+}
 
 // Instancie les objets principaux
 accueil = new Accueil();
@@ -47,6 +48,8 @@ fiches = new Fiches();
 enregistrementFiche = new EnregistrementFiche();
 enregistrementUtilisateur = new EnregistrementUtilisateur();
 connexionUtilisateur = new ConnexionUtilisateur();
+
+console.log('[gfiches] Main step 3');
 
 // Gestion des pages
 $(document).on("pagecontainerbeforeshow", function (event, ui) {
@@ -81,10 +84,3 @@ $(document).on("pagecontainerbeforeshow", function (event, ui) {
         }
     }
 });
-
-// Seulement pour iOS
-if(cordova.platformId === 'ios') 
-{
-    $("#accueil").on('touchmove', function(evt) { evt.preventDefault(); })
-    $("#apropos").on('touchmove', function(evt) { evt.preventDefault(); })
-}

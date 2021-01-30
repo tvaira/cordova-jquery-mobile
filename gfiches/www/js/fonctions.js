@@ -1,6 +1,38 @@
 // Focntions diverses
 // tvaira@free.fr
 
+function isReady()
+{
+    if(jqueryReady && cordovaReady)
+        main();
+}
+
+function onPause()
+{
+    if(cordova.platformId === 'android') 
+    {
+        console.log('[gfiches] onPause()');
+    }    
+}
+
+function onResume()
+{
+    if(cordova.platformId === 'android') 
+    {
+        console.log('[gfiches] onResume()');
+    }    
+}
+
+function initialiserPlateformeIOS()
+{
+    // Seulement pour iOS
+    if(cordova.platformId === 'ios') 
+    {
+        $("#accueil").on('touchmove', function(evt) { evt.preventDefault(); })
+        $("#apropos").on('touchmove', function(evt) { evt.preventDefault(); })
+    }
+}
+
 // cordova plugin add cordova-sqlite-storage
 function supportsSqlitePlugin()
 {
