@@ -72,6 +72,19 @@ $ cordova run ios --device
 
 <a name="icons"/>
 
+Pour navigateur (_browser_) :
+
+```sh
+$ cordova plugin add cordova-plugin-browsersync-gen2
+$ cordova platform add browser
+
+$ cordova run browser --live-reload
+// ou :
+$ cordova serve --live-reload
+```
+
+_Remarque :_ Il est possible alors d'utiliser les outils de développement de Chrome ou la console web de Firefox.
+
 ### Icônes de l'application
 
 Il existe un utilisaire qui assure le redimensionnement automatique des icônes pour Cordova : [cordova-icon](https://github.com/AlexDisler/cordova-icon)
